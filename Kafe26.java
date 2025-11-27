@@ -33,14 +33,10 @@ public class Kafe26 {
         int hargaTotal= hargaItem[pilihanMenu-1]*banyakItem;
 
         if (kodePromo.equals("DISKON50")) {
-            System.out.println("Anda mendapat diskon 50%");
             hargaTotal= hargaTotal-(hargaTotal/2);
         } else if (kodePromo.equals("DISKON30")) {
-            System.out.println("Anda mendapat diskon 30%");
             hargaTotal= hargaTotal-(hargaTotal*30/100);
-        } else {
-            System.out.println("Kode promo invalid!");
-        }
+        } 
         return hargaTotal;
     }
 
@@ -48,15 +44,37 @@ public class Kafe26 {
         Scanner sc= new Scanner(System.in);
         Menu("Budi", true, "DISKON30");
         
-        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
-        int pilihanMenu= sc.nextInt();
-        System.out.print("MAsukkan jumlha item yang ingin dipesan: ");
-        int banyakItem= sc.nextInt();
+        int totalKeseluruhan=0;
+        boolean lanjut= true;
+        String kodePromo= "DISKON30";
 
-        int totalHarga= hitungTotalHarga(pilihanMenu, banyakItem, "DISKON30");
+        while (lanjut) {
+            System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
+            int pilihanMenu= sc.nextInt();
+            System.out.print("Masukkan jumlah item yang ingin dipesan: ");
+            int banyakItem= sc.nextInt();
 
-        System.out.print("Total harga untuk pesanan Anda: Rp"+totalHarga);
+            int totalHarga= hitungTotalHarga(pilihanMenu, banyakItem, kodePromo);
+            totalKeseluruhan+=totalHarga;
 
+            System.out.print("Apakah ingin memesan menu lain? (ya/tidak): ");
+            sc.nextLine();
+            String pesan= sc.nextLine();
+
+            if (pesan.equalsIgnoreCase("tidak")) {
+                lanjut= false;
+            }
+   
+        }
+        if (kodePromo.equals("DISKON50")) {
+            System.out.println("Anda mendapat diskon 50%");
+        } else if (kodePromo.equals("DISKON30")) {
+            System.out.println("Anda mendapat diskon 30%");
+        } else {
+            System.out.println("Kode promo invalid!");
+        }
+
+        System.out.print("Total harga untuk pesanan Anda: Rp"+totalKeseluruhan);
     }
 
     
