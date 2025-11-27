@@ -15,7 +15,7 @@ public class Kafe26 {
         } else {
             System.out.println("Kode promo invalid!");
         }
-
+        
         System.out.println("===== MENU RESTO KAFE =====");
         System.out.println("1. Kopi Hitam - Rp 15.000");
         System.out.println("2. Cappuccio - Rp 20.000");
