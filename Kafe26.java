@@ -27,6 +27,13 @@ public class Kafe26 {
         System.out.println("Silahkan pilih menu yang Anda inginkan");
     }
 
+    public static int hitungTotalHarga(int pilihanMenu, int banyakItem) {
+        int[] hargaItem= {15000, 20000, 22000, 12000, 10000, 18000};
+
+        int hargaTotal= hargaItem[pilihanMenu-1]*banyakItem;
+        return hargaTotal;
+    }
+
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
         Menu("Budi", true, "DISKON30");
@@ -42,12 +49,7 @@ public class Kafe26 {
 
     }
 
-    public static int hitungTotalHarga(int pilihanMenu, int banyakItem) {
-        int[] hargaItem= {15000, 20000, 22000, 12000, 10000, 18000};
-
-        int hargaTotal= hargaItem[pilihanMenu-1]*banyakItem;
-        return hargaTotal;
-    }
+    
 
 
 
