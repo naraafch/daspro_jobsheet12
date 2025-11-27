@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Kafe26 {
     public static void Menu(String namaPelanggan, boolean isMember, String kodePromo) {
         System.out.println("Selamat datang, " +namaPelanggan+ "!");
@@ -26,7 +28,27 @@ public class Kafe26 {
     }
 
     public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
         Menu("Budi", true, "DISKON30");
+        
+        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
+        int pilihanMenu= sc.nextInt();
+        System.out.print("MAsukkan jumlha item yang ingin dipesan: ");
+        int banyakItem= sc.nextInt();
+
+        int totalHarga= hitungTotalHarga(pilihanMenu, banyakItem);
+
+        System.out.print("Total harga untuk pesanan Anda: Rp"+totalHarga);
+
     }
+
+    public static int hitungTotalHarga(int pilihanMenu, int banyakItem) {
+        int[] hargaItem= {15000, 20000, 22000, 12000, 10000, 18000};
+
+        int hargaTotal= hargaItem[pilihanMenu-1]*banyakItem;
+        return hargaTotal;
+    }
+
+
 
 }
